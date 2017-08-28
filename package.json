@@ -15,7 +15,7 @@
   },
   "betterScripts": {
     "start:dev": {
-      "command": "npm-run-all --parallel build go",
+      "command": "npm-run-all --parallel watch:assets go",
       "env": {
         "NODE_ENV": "development"
       }
