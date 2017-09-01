@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "go": "nodemon index.js",
     "start:dev": "better-npm-run start:dev",
     "start:prod": "better-npm-run start:prod",
     "build": "better-npm-run build",
@@ -15,7 +14,7 @@
   },
   "betterScripts": {
     "start:dev": {
-      "command": "npm-run-all --parallel watch:assets go",
+      "command": "nodemon index.js",
       "env": {
         "NODE_ENV": "development"
       }
