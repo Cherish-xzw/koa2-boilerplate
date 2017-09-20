@@ -3,3 +3,4 @@ src/public/*
 src/view/*
 node_modules/
 test/
+dist/
