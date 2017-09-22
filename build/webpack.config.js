@@ -46,6 +46,8 @@ webpackConfig.output = {
   path: project.paths.src('public'),
   publicPath: __PROD__ ? project.production.compiler_public_path : '/',
   filename: __DEV__ ? '[name].js' : '[name].[chunkhash].js',
+  // work with lazy loading
+  chunkFilename: __DEV__ ? '[name].js' : '[name].[chunkhash].js',
 };
 
 // ------------------------------------
@@ -156,8 +158,6 @@ if (__PROD__) {
 
   // https://webpack.js.org/configuration/performance
   webpackConfig.performance = {
-    maxAssetSize: 100,
-    maxEntrypointSize: 300,
     hints: 'warning',
   };
 }
