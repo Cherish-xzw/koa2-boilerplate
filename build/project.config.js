@@ -18,7 +18,7 @@ const config = {
   // ----------------------------------
   // Compiler Configuration
   // ----------------------------------
-  compiler_hash_type: 'hash',
+  compiler_hash_type: 'chunkhash',
 
   // ----------------------------------
   // Server Configuration
