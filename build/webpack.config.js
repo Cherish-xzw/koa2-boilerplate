@@ -4,6 +4,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 // const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const project = require('./project.config');
@@ -149,6 +150,13 @@ if (__PROD__) {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: [ 'vendors' ],
+    }),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8,
     })
     // TODO: shouldn't be here
     // new BundleAnalyzerPlugin()
