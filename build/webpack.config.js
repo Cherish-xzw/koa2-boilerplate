@@ -61,9 +61,7 @@ const copyImages = new CopyWebpackPlugin([
 ]);
 
 const extractSass = new ExtractTextPlugin({
-  filename: __DEV__
-    ? 'application.css'
-    : '[name].[contenthash].css',
+  filename: __DEV__ ? 'application.css' : '[name].[contenthash].css',
   // disable: __DEV__,
 });
 
@@ -151,7 +149,7 @@ if (__PROD__) {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: [ 'vendors' ],
-    }),
+    })
     // TODO: shouldn't be here
     // new BundleAnalyzerPlugin()
   );
@@ -177,7 +175,12 @@ webpackConfig.module.rules = [
   {
     test: /\.js$/,
     exclude: /(node_modules|vendor\/assets)/,
-    loader: 'babel-loader',
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: [ 'es2015' ],
+      },
+    },
   },
   {
     test: /\.html$/,
