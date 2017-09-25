@@ -33,7 +33,9 @@ if (IS_DEV) {
 }
 
 if (IS_PROD) {
-  app.use(serve(path.resolve(__dirname, './public/')));
+  app.use(serve(path.resolve(__dirname, './public/'), {
+    maxage: 1000 * 60 * 60 * 24 * 30, // a month
+  }));
 }
 
 app.use(assetsMiddleware({
