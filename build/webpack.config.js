@@ -46,9 +46,9 @@ webpackConfig.entry = {
 webpackConfig.output = {
   path: project.paths.src('public'),
   publicPath: __PROD__ ? project.production.compiler_public_path : '/',
-  filename: __DEV__ ? '[name].js' : '[name].[chunkhash].js',
+  filename: __DEV__ ? '[name].js' : 'js/[name].[chunkhash].js',
   // work with lazy loading
-  chunkFilename: __DEV__ ? '[name].js' : '[name].[chunkhash].js',
+  chunkFilename: __DEV__ ? '[name].js' : 'js/[name].[chunkhash].js',
 };
 
 // ------------------------------------
@@ -62,7 +62,7 @@ const copyImages = new CopyWebpackPlugin([
 ]);
 
 const extractSass = new ExtractTextPlugin({
-  filename: __DEV__ ? 'application.css' : '[name].[contenthash].css',
+  filename: __DEV__ ? 'application.css' : 'css/[name].[contenthash].css',
   // disable: __DEV__,
 });
 
