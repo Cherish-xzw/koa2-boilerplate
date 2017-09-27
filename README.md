@@ -1,6 +1,6 @@
-# koa2 Boilerplate
+# Koa2 Boilerplate
 
-A simple koa2 boilerplate based on webpack3
+A simple koa2 boilerplate based on webpack3.
 
 ## Features
 
@@ -28,7 +28,7 @@ This is a koa2 starter boilerplate app I've put together using the following tec
 **Step 1**. Make sure that you have [Node.js](https://nodejs.org/) v6 or newer and
 [npm](https://github.com/npm/npm) installed on your development machine.
 
-* node `^6.0.0`
+* node `^6.3.0`
 * npm `^5.0.0`
 
 **Step 2**. Clone this repository
@@ -49,7 +49,7 @@ The depth=1 tells git to only pull down one commit worth of historical data.
 **Step 3**. Compile and launch your app by running:
 
 ```shell
-$ npm run start:dev  # Compiles the app and opens it in a browser with "hot reload"
+$ npm run dev  # Compiles the app and start server with "hot reload"
 ```
 
 Now the app should be running at [http://0.0.0.0:3000/](http://0.0.0.0:3000/)
@@ -62,18 +62,38 @@ A `build` script to bundle JS, CSS, and images for production, with sourcemaps.
 $ npm run build
 ```
 
+## Release
+`release` script can bundle everything we need to publish our code to productiion environment.
+
+```
+$ npm run release
+```
+**Note:** This is script can only running at *nix-like commmand line.
 
 ## Scripts
 
 |`npm <script>`     |Description|
 |-------------------|-----------|
-|`star:dev`         |Serves your app at `localhost:3000`|
-|`star:prod`        |Serves your app at `localhost:3000`|
-|`build`            |Builds the application|
+|`dev`              |Serves your app at `localhost:3000`|
+|`star:prod`        |Serves your app with production mode|
+|`build`            |Builds the static assets|
 |`lint`             |[Lints](http://stackoverflow.com/questions/8503559/what-is-linting) the project for potential errors|
-
+|`release`          |Publish to production environment
 
 
 ## Wiki
 
 - [koa2-boilerplate](http://gitlab.whup.com/UPOem-WebApplication/koa2-boilerplate/wikis/home#koa-boilerplate)
+
+
+## Problem
+
+> Can't install node-sass ?
+
+put this lines in you ~/.npmrc file and ` npm install ` again.
+
+```
+sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
+phantomjs_cdnurl=http://npm.taobao.org/mirrors/phantomjs
+electron_mirror=http://npm.taobao.org/mirrors/electron/
+```
