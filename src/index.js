@@ -48,3 +48,5 @@ app.use(router().routes()).use(router().allowedMethods());
 app.listen(PORT, IP, () => {
   console.log(chalkInfo(`============= [app started at http://${IP ? IP : 'localhost'}:${PORT}]============= `));
 });
+
+export default app;
