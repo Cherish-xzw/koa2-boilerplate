@@ -54,40 +54,27 @@ const config = {
         loader: 'html-loader',
       },
       {
-        test: /\.woff(\?.*)?$/,
-        loader:
-          'url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff',
+        test: /\.vue$/,
+        loader: 'vue-loader',
       },
       {
-        test: /\.woff2(\?.*)?$/,
-        loader:
-          'url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2',
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            limit: 10000,
+            name: 'images/[name].[hash:7].[ext]',
+          },
+        },
       },
       {
-        test: /\.otf(\?.*)?$/,
-        loader:
-          'file-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=font/opentype',
-      },
-      {
-        test: /\.ttf(\?.*)?$/,
-        loader:
-          'url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream',
-      },
-      {
-        test: /\.eot(\?.*)?$/,
-        loader: 'file-loader?prefix=fonts/&name=[path][name].[ext]',
-      },
-      {
-        test: /\.svg(\?.*)?$/,
-        loader:
-          'url-loader?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml',
-      },
-      {
-        test: /\.(png|jpg)$/,
-        loader: 'url-loader',
-        options: {
-          limit: 8192,
-          name: '[name].[ext]',
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            limit: 10000,
+            name: 'fonts/[name].[hash:7].[ext]',
+          },
         },
       },
     ],

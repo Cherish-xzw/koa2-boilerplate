@@ -1,5 +1,8 @@
 @charset 'UTF-8';
 
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
+
 @import './common/reset.scss';
 @import './common/color.scss';
 @import './common/common.scss';
