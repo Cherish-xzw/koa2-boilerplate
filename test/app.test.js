@@ -3,12 +3,25 @@ import request from 'supertest';
 import should from 'should';
 
 const app = _app.callback();
+const agent = request.agent(app);
 
 describe('app', function() {
-  it('should response / with 200', function() {
-    request(app)
+
+  it('should response / with 200', function(done) {
+    agent
       .get('/')
-      .expect(200);
+      .expect(200, done);
+  });
+
+  it('should response data with post request', function(done){
+    agent
+      .post('/api')
+      .set('Content-Type', 'application/json')
+      .send({hello: 'world'})
+      .expect(200, function(err,res){
+        res.body.should.have.property('hello','world');
+        done();
+      });
   });
 });
 

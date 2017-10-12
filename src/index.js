@@ -3,8 +3,10 @@ import Koa from 'koa';
 import path from 'path';
 import render from 'koa-ejs';
 import serve from 'koa-static';
+import bodyParser from 'koa-bodyparser';
 import assetsMiddleware from './middleware/assetsMiddleware';
 import router from './router';
+import api from './router/api';
 import { chalkInfo } from '../build/chalkConfig';
 
 const PORT = process.env.HTTP_PORT || 3000;
@@ -17,7 +19,7 @@ const app = new Koa();
 render(app, {
   root: path.join(__dirname, 'view'),
   layout: 'layout/index',
-  viewExt: 'html',
+  viewExt: 'ejs',
   cache: false,
 });
 
@@ -43,6 +45,8 @@ app.use(assetsMiddleware({
   manifestPath: path.join(__dirname, 'public', 'assets_map.json'),
 }));
 
+app.use(bodyParser());
+app.use(api().routes()).use(api().allowedMethods());
 app.use(router().routes()).use(router().allowedMethods());
 
 app.listen(PORT, IP, () => {
