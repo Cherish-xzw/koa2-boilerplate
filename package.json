@@ -12,9 +12,9 @@
     "test": "mocha --compilers js:babel-register --timeout 3500",
     "lint:watch": "npm run lint -- --watch",
     "clean": "rimraf src/public/* dist",
-    "release:copy": "shx mkdir -p dist/$npm_package_name && shx cp -r src/ build/ *.js *.json .babelrc dist/$npm_package_name",
-    "release:deps": "cd dist/$npm_package_name && npm i --production",
-    "release:package": "cd dist && tar -zcvf $npm_package_name.tar.gz $npm_package_name",
+    "release:copy": "cross-env-shell shx mkdir -p dist/$npm_package_name && cross-env-shell shx cp -r src/ build/ *.js *.json .babelrc dist/$npm_package_name",
+    "release:deps": "cross-env-shell cd dist/$npm_package_name && npm i --production",
+    "release:package": "cd dist && cross-env-shell tar -zcvf $npm_package_name.tar.gz $npm_package_name",
     "release": "npm-run-all clean build release:copy release:deps release:package"
   },
   "betterScripts": {
@@ -45,6 +45,7 @@
   "dependencies": {
     "babel-preset-env": "^1.5.2",
     "babel-register": "^6.24.1",
+    "cross-env": "^5.0.5",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-ejs": "^4.1.0",
