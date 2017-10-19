@@ -6,3 +6,5 @@ npm-debug.log
 /src/public
 /src/config/assets_map.json
 dist/
+.nyc_output
+.DS_Store

@@ -18,13 +18,7 @@ function asyncCalculatorPromise(a, b) {
   });
 }
 
-asyncCalculatorCallback(4, 2, (err, result) => {
-  console.log(result);
-});
-
-asyncCalculatorPromise(4, 2).then(result => console.log(result));
-
 module.exports = {
   asyncCalculatorCallback,
-  asyncCalculatorPromise
-}
+  asyncCalculatorPromise,
+};
