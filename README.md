@@ -62,6 +62,13 @@ A `build` script to bundle JS, CSS, and images for production, with sourcemaps.
 $ npm run build
 ```
 
+## Test
+
+```
+$ npm test
+$ npm run test:cover # running test with coverage
+```
+
 ## Release
 `release` script can bundle everything we need to publish our code to productiion environment.
 
