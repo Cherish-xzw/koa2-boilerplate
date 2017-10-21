@@ -1,10 +1,8 @@
 @charset 'UTF-8';
 
-$fa-font-path: '~font-awesome/fonts';
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 
-@import '~font-awesome/scss/font-awesome.scss';
-@import './common/reset.scss';
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
 @import './common/color.scss';
-@import './common/common.scss';
 @import './page/home.scss';
 @import './page/about.scss';
