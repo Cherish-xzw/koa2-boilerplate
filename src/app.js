@@ -43,6 +43,8 @@ if (IS_PROD) {
 app.use(assetsMiddleware({
   env: process.env.NODE_ENV,
   manifestPath: path.join(__dirname, 'public', 'assets_map.json'),
+  // If assets upload to cdn
+  // cdn: '//cdn.upchina.com',
 }));
 
 app.use(bodyParser());
