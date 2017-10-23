@@ -22,7 +22,7 @@ This is a koa2 starter boilerplate app I've put together using the following tec
 
 ✓ [pre-commit](https://github.com/observing/pre-commit)
 
-
+R
 ## Usage
 
 **Step 1**. Make sure that you have [Node.js](https://nodejs.org/) v6 or newer and
@@ -82,7 +82,7 @@ $ npm run release
 |`npm <script>`     |Description|
 |-------------------|-----------|
 |`dev`              |Serves your app at `localhost:3000`|
-|`star:prod`        |Serves your app with production mode|
+|`start`             |Serves your app with production mode|
 |`build`            |Builds the static assets|
 |`lint`             |[Lints](http://stackoverflow.com/questions/8503559/what-is-linting) the project for potential errors|
 |`release`          |Publish to production environment
