@@ -22,7 +22,6 @@ This is a koa2 starter boilerplate app I've put together using the following tec
 
 ✓ [pre-commit](https://github.com/observing/pre-commit)
 
-R
 ## Usage
 
 **Step 1**. Make sure that you have [Node.js](https://nodejs.org/) v6 or newer and
@@ -85,12 +84,8 @@ $ npm run release
 |`start`             |Serves your app with production mode|
 |`build`            |Builds the static assets|
 |`lint`             |[Lints](http://stackoverflow.com/questions/8503559/what-is-linting) the project for potential errors|
+|`test`             |Run unit test
 |`release`          |Publish to production environment
-
-
-## Wiki
-
-- [koa2-boilerplate](http://gitlab.whup.com/UPOem-WebApplication/koa2-boilerplate/wikis/home#koa-boilerplate)
 
 
 ## Problem
@@ -100,7 +95,7 @@ $ npm run release
 put this lines in you ~/.npmrc file and ` npm install ` again.
 
 ```
-sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
-phantomjs_cdnurl=http://npm.taobao.org/mirrors/phantomjs
-electron_mirror=http://npm.taobao.org/mirrors/electron/
+sass_binary_site=https://npm.taobao.org/mirrors/node-sass
+phantomjs_cdnurl=https://npm.taobao.org/mirrors/phantomjs
+electron_mirror=https://npm.taobao.org/mirrors/electron
 ```

@@ -5,7 +5,8 @@ import about from '../controller/about';
 const appRoutes = () => {
   const router = new Router();
 
-  router.get('/', home).get('/about', about);
+  router.get('/', home);
+  router.get('/about', about);
 
   return router;
 };

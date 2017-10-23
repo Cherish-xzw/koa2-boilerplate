@@ -1,13 +1,12 @@
-(function() {
-  this.Home = (function() {
-    function Home() {
-      this.init();
-    }
+class Home {
+  constructor() {
+    this.init();
+  }
 
-    Home.prototype.init = function() {
-      console.log('init home Page');
-    };
+  init() {
+    console.log('init Home Page...');
+  }
+}
 
-    return Home;
-  })();
-}).call(window);
+window.Home = Home;
+export default Home;

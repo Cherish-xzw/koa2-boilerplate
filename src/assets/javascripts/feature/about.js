@@ -1,13 +1,12 @@
-(function() {
-  this.About = (function() {
-    function About() {
-      this.init();
-    }
+class About {
+  constructor() {
+    this.init();
+  }
 
-    About.prototype.init = function() {
-      console.log('init about Page...');
-    };
+  init() {
+    console.log('init About Page...');
+  }
+}
 
-    return About;
-  })();
-}).call(window);
+window.About = About;
+export default About;

@@ -1,9 +1,3 @@
-// require all common scripts
-
-console.log('loaded common.js...');
-/* eslint no-console: 0 */
-console.log('loaded test script...');
-
 // can easily use loadsh
 console.log('loadsh:', _);
 
