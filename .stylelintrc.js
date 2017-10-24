@@ -12,6 +12,8 @@ module.exports = {
   ],
 
   rules: {
+    'rule-empty-line-before': null,
+
     'property-no-unknown': [
       true,
       {
