@@ -3,8 +3,18 @@ class Home {
     this.init();
   }
 
-  init() {
-    console.log('init Home Page...');
+  async init() {
+    await this.asyncHello();
+    console.log('init done');
+  }
+
+  asyncHello() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        console.log('init Home Page...');
+        resolve();
+      }, 1000);
+    });
   }
 }
 

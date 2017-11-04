@@ -14,7 +14,7 @@ const config = {
   context: project.paths.src('assets/javascripts'),
 
   entry: {
-    application: './application.js',
+    application: [ 'babel-polyfill', './application.js' ],
   },
 
   output: {
@@ -45,7 +45,21 @@ const config = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [ 'es2015' ],
+            presets: [
+              [
+                'env',
+                {
+                  targets: {
+                    browsers: [
+                      '>1%',
+                      'last 4 versions',
+                      'Firefox ESR',
+                      'not ie < 9',
+                    ],
+                  },
+                },
+              ],
+            ],
           },
         },
       },
