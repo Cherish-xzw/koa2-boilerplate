@@ -20,5 +20,5 @@ function asyncCalculatorPromise(a, b) {
 
 module.exports = {
   asyncCalculatorCallback,
-  asyncCalculatorPromise,
+  asyncCalculatorPromise
 };

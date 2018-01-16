@@ -1958,6 +1958,12 @@ eslint-config-egg@^4.2.1:
     eslint-plugin-jsx-a11y "^3.0.2"
     eslint-plugin-react "^6.10.3"
 
+eslint-config-prettier@^2.9.0:
+  version "2.9.0"
+  resolved "http://registry.npm.taobao.org/eslint-config-prettier/download/eslint-config-prettier-2.9.0.tgz#5ecd65174d486c22dff389fe036febf502d468a3"
+  dependencies:
+    get-stdin "^5.0.1"
+
 eslint-import-resolver-node@^0.3.1:
   version "0.3.1"
   resolved "http://registry.npm.taobao.org/eslint-import-resolver-node/download/eslint-import-resolver-node-0.3.1.tgz#4422574cde66a9a7b099938ee4d508a199e0e3cc"

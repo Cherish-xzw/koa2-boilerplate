@@ -18,5 +18,4 @@ class Home {
   }
 }
 
-window.Home = Home;
 export default Home;

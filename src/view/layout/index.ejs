@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="<%= asset_path('application.css') %>">
 </head>
 <body>
+  <%-body%>
   <% if(process.env.NODE_ENV === 'production'){ %>
   <script src="<%= asset_path('manifest.js') %>"></script>
   <% } %>
   <script src="<%= asset_path('vendors.js') %>"></script>
   <script src="<%= asset_path('application.js') %>"></script>
-  <%-body%>
 </body>
 </html>

@@ -1,6 +1,6 @@
-const about = async (ctx) => {
-  await ctx.render('/about', {
-    title: 'About',
+const about = async ctx => {
+  await ctx.render("/about", {
+    title: "About"
   });
 };
 

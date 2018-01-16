@@ -8,5 +8,4 @@ class About {
   }
 }
 
-window.About = About;
 export default About;
