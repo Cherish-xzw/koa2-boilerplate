@@ -9,7 +9,7 @@ const apiRoutes = () => {
     ctx.body = ctx.request.body;
   });
 
-  return router;
+  return router.routes();
 };
 
 export default apiRoutes;

@@ -1,7 +1,9 @@
 // import stylesheets
 import '../stylesheets/application.scss';
 
-import 'jquery';
+import $ from 'jquery';
+window.$ = $;
+window.jQuery = $;
 
 import './common';
 

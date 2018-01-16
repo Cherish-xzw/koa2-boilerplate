@@ -8,7 +8,7 @@ const appRoutes = () => {
   router.get('/', home);
   router.get('/about', about);
 
-  return router;
+  return router.routes();
 };
 
 export default appRoutes;
