@@ -1,5 +1,5 @@
 {
-  "extends": "eslint-config-egg",
+  "extends": ["eslint-config-egg", "prettier"],
   "parserOptions": {
     "ecmaVersion": 8,
     "sourceType": "module"

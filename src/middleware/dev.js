@@ -1,4 +1,4 @@
-const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackDevMiddleware = require("webpack-dev-middleware");
 
 module.exports = function(compiler, opts) {
   const middleware = webpackDevMiddleware(compiler, opts);
@@ -11,7 +11,7 @@ module.exports = function(compiler, opts) {
         },
         setHeader: (name, value) => {
           ctx.set(name, value);
-        },
+        }
       },
       next
     );
