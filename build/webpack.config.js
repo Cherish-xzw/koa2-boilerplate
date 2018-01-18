@@ -7,7 +7,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
 
 const IS_PROD = process.env.NODE_ENV === "production";
-const ROOT_PATH = path.resolve(__dirname, '..');
+const ROOT_PATH = path.resolve(__dirname, "..");
 
 function resolve(dir) {
   return path.join(ROOT_PATH, dir);
@@ -24,7 +24,7 @@ const config = {
     path: resolve("src/public/static"),
     publicPath: "/static/",
     filename: IS_PROD ? "js/[name].[chunkhash].js" : "[name].js",
-    chunkFilename: IS_PROD ? "js/[name].[chunkhash].js" : "[name].js" // works with lazy loading
+    chunkFilename: IS_PROD ? "js/[name].[chunkhash].js" : "[name].chunk.js" // works with lazy loading
   },
 
   resolve: {
@@ -55,7 +55,8 @@ const config = {
                     browsers: [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"]
                   }
                 }
-              ]
+              ],
+              ["stage-2"]
             ]
           }
         }
@@ -103,7 +104,7 @@ const config = {
     }),
     new webpack.ProvidePlugin({
       $: "jquery",
-      jQuery: "jquery",
+      jQuery: "jquery"
     }),
     new webpack.DefinePlugin({
       "process.env": { NODE_ENV: JSON.stringify("production") }

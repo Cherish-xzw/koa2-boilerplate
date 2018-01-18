@@ -1,2 +1,2 @@
 // can easily use jquery
-console.log('jquery:', $);
+console.log("jquery:", $);

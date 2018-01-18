@@ -4,7 +4,7 @@ class About {
   }
 
   init() {
-    console.log('init About Page...');
+    console.log("init About Page...");
   }
 }
 

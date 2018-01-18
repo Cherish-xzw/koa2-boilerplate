@@ -1,7 +1,7 @@
 {
   "extends": ["eslint-config-egg", "prettier"],
+  "parser":"babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 8,
     "sourceType": "module"
   },
   "rules": {

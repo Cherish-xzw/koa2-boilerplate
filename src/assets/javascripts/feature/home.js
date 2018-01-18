@@ -5,13 +5,13 @@ class Home {
 
   async init() {
     await this.asyncHello();
-    console.log('init done');
+    console.log("init done");
   }
 
   asyncHello() {
     return new Promise(resolve => {
       setTimeout(() => {
-        console.log('init Home Page...');
+        console.log("init Home Page...");
         resolve();
       }, 1000);
     });
