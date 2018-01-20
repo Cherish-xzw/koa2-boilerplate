@@ -9,8 +9,6 @@ env:
 install:
   - npm install
 
-before_script:
-  - npm run release
-
 script:
-  - 'cd release/koa2-boilerplate && node dist/server.js'
+  - npm test
+  - npm run release
