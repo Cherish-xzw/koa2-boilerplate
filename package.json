@@ -11,7 +11,7 @@
     "dev": "cross-env NODE_ENV=development nodemon --watch src/ --exec babel-node src/server.js",
     "start": "cross-env-shell NODE_ENV=production \"npm run build && node dist/server.js\"",
     "lint": "eslint . && stylelint **/*.scss",
-    "test": "nyc mocha --compilers js:babel-register --require babel-polyfill --timeout 3500",
+    "test": "nyc mocha",
     "build": "npm-run-all clean --parallel build:*",
     "release": "npm-run-all clean build release:copy release:deps release:package",
     "clean": "rimraf public/static dist build release",

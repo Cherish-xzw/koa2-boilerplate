@@ -14,6 +14,7 @@
   "globals": {
     "window": true,
     "$": true,
-    "_": true
+    "_": true,
+    "should": true
   }
 }

@@ -1,6 +1,4 @@
-# Koa2 Boilerplate
-[![Build Status](https://travis-ci.org/Cherish-xzw/express-webpack-starter.svg?branch=master)](https://travis-ci.org/Cherish-xzw/express-webpack-starter)
-
+# Koa2 Boilerplate [![Build Status](https://travis-ci.org/Cherish-xzw/koa2-boilerplate.svg?branch=master)](https://travis-ci.org/Cherish-xzw/koa2-boilerplate)
 A simple koa2 boilerplate based on webpack3.
 
 ## Features
