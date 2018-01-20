@@ -1,0 +1,16 @@
+language: node_js
+
+node_js:
+  - "6"
+
+env:
+  - TAF_CONFIG=true
+
+install:
+  - npm install
+
+before_script:
+  - npm run release
+
+script:
+  - 'cd release/koa2-boilerplate && node dist/server.js'
