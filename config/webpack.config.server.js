@@ -29,6 +29,8 @@ const config = {
     extensions: ['.js', '.json']
   },
 
+  devtool: 'source-map',
+
   module: {
     rules: [
       {

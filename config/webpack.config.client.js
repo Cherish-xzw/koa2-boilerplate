@@ -139,7 +139,8 @@ if (IS_PROD) {
         unused: true,
         dead_code: true,
         warnings: false
-      }
+      },
+      sourceMap: true,
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new AssetsWebpackPlugin({
