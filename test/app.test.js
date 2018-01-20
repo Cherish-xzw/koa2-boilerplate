@@ -1,4 +1,4 @@
-import _app from "..";
+import _app from "../src/app";
 import request from "supertest";
 import should from "should";
 

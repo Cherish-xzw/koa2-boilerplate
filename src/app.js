@@ -9,8 +9,6 @@ import state from "./middleware/state";
 import page from "./router/page";
 import api from "./router/api";
 
-const PORT = process.env.HTTP_PORT || 3000;
-const IP = process.env.HTTP_IP || undefined;
 const IS_DEV = process.env.NODE_ENV === "development";
 const IS_PROD = process.env.NODE_ENV === "production";
 
@@ -26,7 +24,7 @@ render(app, {
 if (IS_DEV) {
   const webpack = require("webpack");
   const dev = require("./middleware/dev");
-  const webpackConfig = require("../build/webpack.config");
+  const webpackConfig = require("../config/webpack.config.client");
   const compiler = webpack(webpackConfig);
   app.use(
     dev(compiler, {
@@ -37,14 +35,14 @@ if (IS_DEV) {
 }
 
 app.use(
-  serve(path.resolve(__dirname, "./public/"), {
+  serve(path.resolve(__dirname, "../public/"), {
     maxage: 1000 * 60 * 60 * 24 * 30 // a month
   })
 );
 app.use(
   assets({
     env: process.env.NODE_ENV,
-    manifestPath: path.join(__dirname, "public/static/", "manifest.json"),
+    manifestPath: path.join(__dirname, "../public/static/", "manifest.json"),
     outPath: "/static"
     // If assets have been uploaded to cdn
     // cdn: '//cdn.upchina.com',
@@ -54,11 +52,5 @@ app.use(state());
 app.use(bodyParser());
 app.use(api());
 app.use(page());
-
-app.listen(PORT, IP, () => {
-  console.log(
-    `============= [app started at http://${IP ? IP : "localhost"}:${PORT}]============= `
-  );
-});
 
 export default app;

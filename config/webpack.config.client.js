@@ -14,6 +14,10 @@ function resolve(dir) {
 }
 
 const config = {
+  name: 'client',
+
+  target:'web',
+
   context: resolve("src/assets/javascripts"),
 
   entry: {
@@ -21,7 +25,7 @@ const config = {
   },
 
   output: {
-    path: resolve("src/public/static"),
+    path: resolve("public/static"),
     publicPath: "/static/",
     filename: IS_PROD ? "js/[name].[chunkhash].js" : "[name].js",
     chunkFilename: IS_PROD ? "js/[name].[chunkhash].js" : "[name].chunk.js" // works with lazy loading
@@ -95,7 +99,7 @@ const config = {
     new CopyWebpackPlugin([
       {
         from: resolve("src/assets/images"),
-        to: resolve("src/public/static/images")
+        to: resolve("public/static/images")
       }
     ]),
     new ExtractTextPlugin({
@@ -140,7 +144,7 @@ if (IS_PROD) {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new AssetsWebpackPlugin({
       filename: "manifest.json",
-      path: resolve("src/public/static"),
+      path: resolve("public/static"),
       prettyPrint: true
     }),
     // extract webpack runtime and module manifest to its own file in order to
