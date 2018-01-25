@@ -14,9 +14,9 @@ function resolve(dir) {
 }
 
 const config = {
-  name: 'client',
+  name: "client",
 
-  target:'web',
+  target: "web",
 
   context: resolve("src/assets/javascripts"),
 
@@ -32,6 +32,9 @@ const config = {
   },
 
   resolve: {
+    alias: {
+      vue$: "vue/dist/vue.esm.js"
+    },
     extensions: [".js", ".vue", ".json"]
   },
 
@@ -78,7 +81,7 @@ const config = {
         use: {
           loader: "url-loader",
           options: {
-            limit: 2048,
+            limit: 10000
           }
         }
       },
@@ -140,7 +143,7 @@ if (IS_PROD) {
         dead_code: true,
         warnings: false
       },
-      sourceMap: true,
+      sourceMap: true
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new AssetsWebpackPlugin({
