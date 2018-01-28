@@ -1,6 +1,7 @@
 {
-  "extends": ["eslint-config-egg", "prettier"],
-  "parser":"babel-eslint",
+  "extends": ["eslint-config-egg", "prettier", "plugin:react/recommended"],
+  "parser": "babel-eslint",
+  "plugins": ["react"],
   "parserOptions": {
     "sourceType": "module"
   },
