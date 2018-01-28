@@ -8,7 +8,7 @@
   },
   "main": "dist/server.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon --watch src/ --exec babel-node src/server.js",
+    "dev": "concurrently -k \"npm run dev:client\" \"npm run dev:server\"",
     "start": "cross-env-shell NODE_ENV=production \"npm run build && node dist/server.js\"",
     "lint": "eslint . && stylelint **/*.scss",
     "test": "nyc mocha",
@@ -16,6 +16,8 @@
     "release": "npm-run-all clean build release:copy release:deps release:package",
     "clean": "rimraf public/static dist build release",
     "prettier": "prettier */**/*.js --write && git add --force && git status",
+    "dev:client": "nodemon --watch config/webpack.config.js -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config config/webpack.config.client.js",
+    "dev:server": "cross-env DEBUG=app:* NODE_ENV=development nodemon --watch src/ --ignore src/assets --exec babel-node src/server.js",
     "build:client": "cross-env NODE_ENV=production webpack --colors --config config/webpack.config.client.js",
     "build:server": "cross-env NODE_ENV=production webpack --colors --config config/webpack.config.server.js",
     "test:cover": "nyc --reporter=html npm test",
@@ -51,6 +53,7 @@
     "bootstrap-sass": "^3.3.7",
     "chalk": "^1.1.3",
     "compression-webpack-plugin": "^1.0.0",
+    "concurrently": "^3.5.1",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.4",
@@ -64,8 +67,7 @@
     "html-loader": "^0.4.5",
     "html-webpack-plugin": "^2.28.0",
     "jquery": "^3.2.1",
-    "koa-webpack-dev-middleware": "^2.0.0",
-    "koa-webpack-middleware": "^1.0.5",
+    "koa-proxies": "^0.6.2",
     "mocha": "^3.5.3",
     "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
@@ -90,7 +92,7 @@
     "vue-template-compiler": "^2.5.13",
     "webpack": "^3.0.0",
     "webpack-bundle-analyzer": "^2.8.2",
-    "webpack-dev-middleware": "^1.12.0",
+    "webpack-dev-server": "^2.11.1",
     "webpack-node-externals": "^1.6.0"
   }
 }

@@ -14,26 +14,6 @@ const IS_PROD = process.env.NODE_ENV === "production";
 
 const app = new Koa();
 
-render(app, {
-  root: path.join(__dirname, "view"),
-  layout: "layout/index",
-  viewExt: "ejs",
-  cache: IS_PROD
-});
-
-if (IS_DEV) {
-  const webpack = require("webpack");
-  const dev = require("./middleware/dev");
-  const webpackConfig = require("../config/webpack.config.client");
-  const compiler = webpack(webpackConfig);
-  app.use(
-    dev(compiler, {
-      publicPath: webpackConfig.output.publicPath,
-      stats: { colors: true }
-    })
-  );
-}
-
 app.use(
   serve(path.resolve(__dirname, "../public/"), {
     maxage: 1000 * 60 * 60 * 24 * 30 // a month
@@ -52,5 +32,23 @@ app.use(state());
 app.use(bodyParser());
 app.use(api());
 app.use(page());
+
+render(app, {
+  root: path.join(__dirname, "view"),
+  layout: "layout/index",
+  viewExt: "ejs",
+  cache: IS_PROD
+});
+
+// proxy the webpack assets directory to the webpack-dev-server.
+// It is only intended for use in development.
+if (IS_DEV) {
+  const proxy = require("koa-proxies");
+  app.use(
+    proxy("/static", {
+      target: "http://localhost:3808"
+    })
+  );
+}
 
 export default app;

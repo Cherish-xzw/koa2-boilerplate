@@ -130,6 +130,10 @@ const config = {
 if (!IS_PROD) {
   config.devtool = "cheap-module-eval-source-map";
   config.plugins.push(new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin());
+  config.devServer = {
+    host: '0.0.0.0',
+    port: '3808'
+  };
 }
 
 if (IS_PROD) {
