@@ -1,6 +1,6 @@
-const webpack = require('webpack');
-const path = require('path');
-const nodeExternals = require('webpack-node-externals');
+const webpack = require("webpack");
+const path = require("path");
+const nodeExternals = require("webpack-node-externals");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const ROOT_PATH = path.resolve(__dirname, "..");
@@ -10,26 +10,26 @@ function resolve(dir) {
 }
 
 const config = {
-  name: 'server',
-  target: 'node',
+  name: "server",
+  target: "node",
 
-  context: resolve('src'),
+  context: resolve("src"),
 
   entry: {
-    server: './server.js'
+    server: "./server.js"
   },
 
   output: {
-    path: resolve('dist'),
-    filename: '[name].js',
-    libraryTarget: 'commonjs2',
+    path: resolve("dist"),
+    filename: "[name].js",
+    libraryTarget: "commonjs2"
   },
 
   resolve: {
-    extensions: ['.js', '.json']
+    extensions: [".js", ".json"]
   },
 
-  devtool: 'source-map',
+  devtool: "source-map",
 
   module: {
     rules: [
@@ -43,15 +43,15 @@ const config = {
                 "env",
                 {
                   targets: {
-                    node: '6.3'
+                    node: "6.3"
                   },
                   modules: false,
                   useBuiltIns: false,
-                  debug: false,
+                  debug: false
                 }
               ],
               ["stage-2"]
-            ],
+            ]
           }
         }
       }
@@ -71,15 +71,13 @@ const config = {
     new webpack.BannerPlugin({
       banner: 'require("source-map-support").install();',
       raw: true,
-      entryOnly: false,
-    }),
+      entryOnly: false
+    })
   ],
 
   externals: [
     nodeExternals({
-      whitelist: [
-        /koa-*/
-      ],
+      whitelist: [/koa-*/]
     })
   ],
 
@@ -91,9 +89,8 @@ const config = {
     process: false,
     Buffer: false,
     __filename: false,
-    __dirname: false,
-  },
-
-}
+    __dirname: false
+  }
+};
 
 module.exports = config;

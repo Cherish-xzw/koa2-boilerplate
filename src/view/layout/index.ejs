@@ -9,7 +9,7 @@
 </head>
 <body>
   <%-body%>
-  <% if(process.env.NODE_ENV === 'production'){ %>
+  <% if(production){ %>
   <script src="<%= asset_path('manifest.js') %>"></script>
   <% } %>
   <script src="<%= asset_path('vendors.js') %>"></script>

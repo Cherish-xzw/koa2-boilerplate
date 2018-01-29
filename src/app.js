@@ -9,9 +9,6 @@ import state from "./middleware/state";
 import page from "./router/page";
 import api from "./router/api";
 
-const IS_DEV = process.env.NODE_ENV === "development";
-const IS_PROD = process.env.NODE_ENV === "production";
-
 const app = new Koa();
 
 app.use(
@@ -21,11 +18,8 @@ app.use(
 );
 app.use(
   assets({
-    env: process.env.NODE_ENV,
-    manifestPath: path.join(__dirname, "../public/static/", "manifest.json"),
-    outPath: "/static"
-    // If assets have been uploaded to cdn
-    // cdn: '//cdn.upchina.com',
+    publicPath: "/static/"
+    // prepend: '//cdn.upchina.com' // If assets have been uploaded to cdn
   })
 );
 app.use(state());
@@ -37,12 +31,12 @@ render(app, {
   root: path.join(__dirname, "view"),
   layout: "layout/index",
   viewExt: "ejs",
-  cache: IS_PROD
+  cache: app.env === "production"
 });
 
 // proxy the webpack assets directory to the webpack-dev-server.
 // It is only intended for use in development.
-if (IS_DEV) {
+if (app.env === "development") {
   const proxy = require("koa-proxies");
   app.use(
     proxy("/static", {
