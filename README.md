@@ -13,7 +13,7 @@ This is a koa2 starter boilerplate app I've put together using the following tec
 
 ✓ [Babel](http://babeljs.io/)
 
-✓ [SCSS](http://sass-lang.com/)
+✓ [LESS](http://lesscss.org/)
 
 ✓ [Hot reload](https://github.com/leecade/koa-webpack-middleware)
 
@@ -86,15 +86,3 @@ $ npm run release
 |`test`             |Run unit test
 |`release`          |Publish to production environment
 
-
-## Problem
-
-> Can't install node-sass ?
-
-put this lines in you ~/.npmrc file and ` npm install ` again.
-
-```
-sass_binary_site=https://npm.taobao.org/mirrors/node-sass
-phantomjs_cdnurl=https://npm.taobao.org/mirrors/phantomjs
-electron_mirror=https://npm.taobao.org/mirrors/electron
-```
