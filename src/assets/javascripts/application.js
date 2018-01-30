@@ -1,5 +1,5 @@
 // import stylesheets
-import "../stylesheets/application.scss";
+import "../stylesheets/application.less";
 
 import $ from "jquery";
 window.$ = $;
