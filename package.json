@@ -16,7 +16,7 @@
     "release": "npm-run-all clean build release:copy release:deps release:package",
     "clean": "rimraf public/static dist build release",
     "prettier": "prettier */**/*.js --write && git add --force && git status",
-    "dev:client": "nodemon --watch config/webpack.config.js -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config config/webpack.config.client.js",
+    "dev:client": "nodemon --watch config/webpack.config.client.js -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config config/webpack.config.client.js",
     "dev:server": "cross-env DEBUG=app:* nodemon --watch src/ --ignore src/assets --exec babel-node src/server.js",
     "build:client": "cross-env NODE_ENV=production webpack --colors --config config/webpack.config.client.js",
     "build:server": "cross-env NODE_ENV=production webpack --colors --config config/webpack.config.server.js",
