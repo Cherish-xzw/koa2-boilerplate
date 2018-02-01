@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const AssetsWebpackPlugin = require("assets-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
+const pkg = require("../package.json");
 
 const IS_PROD = process.env.NODE_ENV === "production";
 const ROOT_PATH = path.resolve(__dirname, "..");
@@ -71,7 +72,7 @@ const config = {
                 "env",
                 {
                   targets: {
-                    browsers: [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"]
+                    browsers: pkg.browserslist
                   }
                 }
               ],
@@ -87,7 +88,28 @@ const config = {
       },
       {
         test: /\.vue$/,
-        loader: "vue-loader"
+        loader: "vue-loader",
+        options: {
+          loaders: {
+            js:{
+              loader: "babel-loader",
+              options: {
+                presets: [
+                  [
+                    "env",
+                    {
+                      targets: {
+                        browsers: pkg.browserslist
+                      }
+                    }
+                  ],
+                  ["stage-2"],
+                  ["react"]
+                ]
+              }
+            }
+          }
+        }
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

@@ -6,6 +6,12 @@
     "node": ">=6.3",
     "npm": ">=3.10"
   },
+  "browserlists": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ],
   "main": "dist/server.js",
   "scripts": {
     "dev": "concurrently -k \"npm run dev:client\" \"npm run dev:server\"",
@@ -16,11 +22,11 @@
     "release": "npm-run-all clean build release:copy release:deps release:package",
     "clean": "rimraf public/static dist build release",
     "prettier": "prettier */**/*.js --write && git add --force && git status",
+    "test:cover": "nyc --reporter=html mocha",
     "dev:client": "nodemon --watch config/webpack.config.client.js -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config config/webpack.config.client.js",
     "dev:server": "cross-env DEBUG=app:* nodemon --watch src/ --ignore src/assets --exec babel-node src/server.js",
     "build:client": "cross-env NODE_ENV=production webpack --colors --config config/webpack.config.client.js",
     "build:server": "cross-env NODE_ENV=production webpack --colors --config config/webpack.config.server.js",
-    "test:cover": "nyc --reporter=html npm test",
     "release:copy": "cross-env-shell \"shx mkdir -p release/$npm_package_name && shx cp -r dist/ public/  *.json release/$npm_package_name\" ",
     "release:deps": "cross-env-shell \"cd release/$npm_package_name && npm i --production\" ",
     "release:package": "cross-env-shell \"cd release/ && tar -zcvf $npm_package_name.tar.gz $npm_package_name\" "

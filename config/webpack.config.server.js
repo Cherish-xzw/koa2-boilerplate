@@ -2,6 +2,7 @@ const webpack = require("webpack");
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const pkg = require("../package.json");
 
 const ROOT_PATH = path.resolve(__dirname, "..");
 
@@ -43,7 +44,7 @@ const config = {
                 "env",
                 {
                   targets: {
-                    node: "6.3"
+                    node: pkg.engines.node.match(/(\d+\.?)+/)[0],
                   },
                   modules: false,
                   useBuiltIns: false,
