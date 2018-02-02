@@ -44,7 +44,7 @@ const config = {
                 "env",
                 {
                   targets: {
-                    node: pkg.engines.node.match(/(\d+\.?)+/)[0],
+                    node: pkg.engines.node.match(/(\d+\.?)+/)[0]
                   },
                   modules: false,
                   useBuiltIns: false,

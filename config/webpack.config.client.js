@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const AssetsWebpackPlugin = require("assets-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const pkg = require("../package.json");
 
 const IS_PROD = process.env.NODE_ENV === "production";
@@ -60,7 +61,7 @@ const config = {
       {
         test: /\.js$/,
         include: [
-          resolve('src'),
+          resolve("src"),
           // webpack-dev-server#1090 for Safari
           /node_modules\/webpack-dev-server/
         ],
@@ -91,7 +92,7 @@ const config = {
         loader: "vue-loader",
         options: {
           loaders: {
-            js:{
+            js: {
               loader: "babel-loader",
               options: {
                 presets: [
@@ -209,6 +210,13 @@ if (IS_PROD) {
       cssProcessorOptions: {
         safe: true
       }
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: "static",
+      generateStatsFile: true,
+      openAnalyzer: false,
+      reportFilename: resolve("webpack-report/index.html"),
+      statsFilename: resolve("webpack-report/stats.json")
     })
   );
 
