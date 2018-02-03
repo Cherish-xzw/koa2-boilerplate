@@ -91,6 +91,7 @@ const config = {
         test: /\.vue$/,
         loader: "vue-loader",
         options: {
+          extractCSS : true,
           loaders: {
             js: {
               loader: "babel-loader",
