@@ -21,7 +21,7 @@
     "build": "npm-run-all clean --parallel build:*",
     "release": "npm-run-all clean build release:copy release:deps release:package",
     "clean": "rimraf public/static dist build release",
-    "prettier": "prettier */**/*.js --write && git add --force && git status",
+    "lint:staged": "lint-staged",
     "test:cover": "nyc --reporter=html mocha",
     "dev:client": "nodemon --watch config/webpack.config.client.js -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config config/webpack.config.client.js",
     "dev:server": "cross-env DEBUG=app:* nodemon --watch src/ --ignore src/assets --exec babel-node src/server.js",
@@ -31,8 +31,19 @@
     "release:deps": "cross-env-shell \"cd release/$npm_package_name && npm i --production\" ",
     "release:package": "cross-env-shell \"cd release/ && tar -zcvf $npm_package_name.tar.gz $npm_package_name\" "
   },
-  "pre-commit": [
-    "prettier",
+  "lint-staged": {
+    "*.{js}": [
+      "eslint --no-ignore --fix",
+      "prettier --write",
+      "git add --force"
+    ],
+    "*.{css,less,styl,scss,sass,sss}": [
+      "stylelint --fix",
+      "git add --force"
+    ]
+  },
+  "precommit": [
+    "lint:staged",
     "lint"
   ],
   "author": "chenbin92 travisxu",
@@ -74,6 +85,7 @@
     "koa-proxies": "^0.6.2",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
+    "lint-staged": "^6.1.0",
     "mocha": "^3.5.3",
     "nodemon": "^1.11.0",
     "normalize.css": "^7.0.0",
@@ -83,6 +95,8 @@
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "pre-commit": "^1.2.2",
     "prettier": "1.9.2",
+    "prettier-eslint": "^8.8.1",
+    "prettier-stylelint": "^0.4.2",
     "resolve-path": "^1.3.3",
     "should": "^13.1.0",
     "shx": "^0.2.2",
