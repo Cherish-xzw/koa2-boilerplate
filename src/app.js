@@ -31,7 +31,7 @@ render(app, {
   root: path.join(__dirname, "view"),
   layout: "layout/index",
   viewExt: "ejs",
-  cache: app.env === "production"
+  cache: true
 });
 
 // proxy the webpack assets directory to the webpack-dev-server.
