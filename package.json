@@ -15,7 +15,7 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "concurrently -k \"npm run dev:client\" \"npm run dev:server\"",
-    "start": "cross-env-shell NODE_ENV=production \"npm run build && node dist/server.js\"",
+    "start": "cross-env-shell NODE_ENV=production \"npm run build && cd dist && node server.js\"",
     "lint": "eslint . && stylelint **/*.less",
     "test": "nyc mocha",
     "build": "npm-run-all clean --parallel build:*",
@@ -46,7 +46,16 @@
     "lint:staged",
     "lint"
   ],
-  "author": "chenbin92 travisxu",
+  "contributors": [
+    {
+      "name": "chenbin92",
+      "email": "chenbinad@gmail.com"
+    },
+    {
+      "name": "travisxu",
+      "email": "xuzhengwei.amor@gmail.com"
+    }
+  ],
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "koa": "^2.3.0",

@@ -15,8 +15,6 @@ This is a koa2 starter boilerplate app I've put together using the following tec
 
 ✓ [LESS](http://lesscss.org/)
 
-✓ [Hot reload](https://github.com/leecade/koa-webpack-middleware)
-
 ✓ [Eslint](https://github.com/eslint/eslint)
 
 ✓ [pre-commit](https://github.com/observing/pre-commit)

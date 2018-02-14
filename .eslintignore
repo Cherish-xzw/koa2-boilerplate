@@ -1,6 +1,7 @@
 coverage
 src/public/*
 src/view/*
+src/proxy/*
 node_modules/
 /test/
 /public/static
