@@ -29,7 +29,7 @@ const config = {
 
   output: {
     path: resolve("public/static"),
-    publicPath: "/static/",
+    publicPath: `${pkg.path === '/'  ? '' : pkg.path }/static/`,
     filename: IS_PROD ? "js/[name].[chunkhash].js" : "[name].js",
     chunkFilename: IS_PROD ? "js/[name].[chunkhash].js" : "[name].chunk.js" // works with lazy loading
   },

@@ -9,6 +9,7 @@
 </head>
 <body>
   <%-body%>
+  <script>window.__publicPath = "<%=publicPath%>"</script>
   <% if(production){ %>
   <script src="<%= asset_path('manifest.js') %>"></script>
   <% } %>

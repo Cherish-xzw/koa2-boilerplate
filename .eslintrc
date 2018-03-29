@@ -16,6 +16,7 @@
     "window": true,
     "$": true,
     "_": true,
-    "should": true
+    "should": true,
+    "__publicPath": true
   }
 }

@@ -1,8 +1,10 @@
 import Koa from "koa";
 import path from "path";
 import render from "koa-ejs";
+import mount from 'koa-mount';
 import serve from "koa-static";
 import bodyParser from "koa-bodyparser";
+import pkg from '../package.json';
 
 import assets from "./middleware/assets";
 import state from "./middleware/state";
@@ -12,20 +14,20 @@ import api from "./router/api";
 const app = new Koa();
 
 app.use(
-  serve(path.resolve(__dirname, "../public/"), {
+  mount(pkg.path , serve(path.resolve(__dirname, "../public/"), {
     maxage: 1000 * 60 * 60 * 24 * 30 // a month
-  })
+  }))
 );
 app.use(
   assets({
-    publicPath: "/static/"
+    publicPath: `${pkg.path === '/'  ? '' : pkg.path }/static/`
     // prepend: '//cdn.upchina.com' // If assets have been uploaded to cdn
   })
 );
 app.use(state());
 app.use(bodyParser());
-app.use(api());
-app.use(page());
+app.use(mount(pkg.path, api()));
+app.use(mount(pkg.path, page()));
 
 render(app, {
   root: path.join(__dirname, "view"),
@@ -39,7 +41,7 @@ render(app, {
 if (app.env === "development") {
   const proxy = require("koa-proxies");
   app.use(
-    proxy("/static", {
+    proxy(`${pkg.path === '/'  ? '' : pkg.path }/static`, {
       target: "http://localhost:3808"
     })
   );

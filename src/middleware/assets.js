@@ -16,7 +16,11 @@ module.exports = (
         if (options.prepend) {
           url += options.prepend;
         }
-        url += ctx.app.assetsManifest[name][suffix];
+        if( name in ctx.app.assetsManifest ) {
+          url += ctx.app.assetsManifest[name][suffix];
+        } else {
+          url += `${options.publicPath}${name}.${suffix}`;
+        }
       }
       return url;
     };
